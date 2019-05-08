@@ -6,6 +6,49 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
   <style>
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed,
+    figure, figcaption, footer, header, hgroup,
+    menu, nav, output, ruby, section, summary,
+    time, mark, audio, video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+    }
+    /* HTML5 display-role reset for older browsers */
+    article, aside, details, figcaption, figure,
+    footer, header, hgroup, menu, nav, section {
+      display: block;
+    }
+    body {
+      line-height: 1.4;
+    }
+    ol, ul {
+      list-style: none;
+    }
+    blockquote, q {
+      quotes: none;
+    }
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+      content: '';
+      content: none;
+    }
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
     body{
       font-family: 'Montserrat', sans-serif;
     }
@@ -20,14 +63,25 @@
       position: relative;
       top: -2px;
       text-decoration: none;
-      transition: all 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95); 
+      transition: all 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
       transform: scale(1);
-      transform-origin: left bottom; 
+      transform-origin: left bottom;
       display: inline-block;
     }
     a:hover{
       transform: scale(1.1);
       color: #171717;
+    }
+    p{
+      margin-bottom: 15px;
+    }
+    .nav{
+      z-index: 5;
+      position: fixed;
+      top: 0px;
+      background: #000;
+      color: #fff;
+      width: 100%;
     }
     .grid{
       display: grid;
@@ -47,9 +101,9 @@
       justify-self: left;
       color: #fff;
       text-shadow: 1px 1px 6px #000000a6;
-      margin-left: 20px;
+      margin: 0 0 20px 20px;
       background: #000;
-      padding: 3px 5px;
+      padding: 5px 8px;
     }
     .notes{
       color: #000;
@@ -67,9 +121,17 @@
     }
     .wrap{
       max-width: 1200px;
-      width: 95%;
       padding: 20px;
       margin: auto;
+      overflow: hidden;
+    }
+    section{
+      margin-top: 40px;
+
+    }
+    h2{
+      font-size: 24px;
+      font-weight: 600;
     }
     ul, li{
       padding: 0px;
@@ -83,34 +145,95 @@
     li:nth-child(even){
       background: #ececec;
     }
-    .tutorials{
+    .tut-draw{
+      z-index: 4;
+      width: 100%;
       position: fixed;
-      /* width: 100%; */
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      align-items: start;
+    }
+    .tutorials{
+      grid-column: 1 / -1;
+      grid-row: 1 / -1;
+      margin: auto;
+      transform: translateY(-100px);
+      max-width: 600px;
+      width: 100%;
+      opacity: 0;
       padding: 40px;
       overflow: hidden;
-      background: #000;
-      color: #fff;
       z-index: 2;
       visibility: hidden;
+      background: #fff;
+      color: #000;
+      border: 1px solid #f1f1f1;
+      box-shadow: 2px 2px 2px #00000029;
+      transition: 1s ease all;
+      margin: 20px;
     }
+    .active{
+      transform: translateY(0);
+      opacity: 1;
+      visibility:visible;
+    }
+
+
   </style>
 <title>Image Resizing Guide</title>
 </head>
 <body>
-  <div class="tutorials">
-    <h2>For Designers</h2>
-    <p>Use .svg over .png when possible</p>
-    <p>Use PhotoShop to resize/crop images to the correct sizes listed below. Then save for web File > Export > Save For Web. Use JPEG and check the progressive option.</p>
+  <div class="nav">
+    <div class="wrap">
+      <select name="jumpToClient">
+        <option disabled selected>Jump to Client</option>
+      </select>
+      <label>Instructions For:</label>
+      <button class="forDesigner">Designers</button>
+      <button class="forNonDesigners">Non-Designers</button>
+    </div>
   </div>
-  <div class="wrap">
+  <div class="tut-draw">
+    <div class="tutorials designer-tut">
+      <h2>For Designers</h2>
+      <p>Use .svg over .png when possible</p>
+      <p>Use PhotoShop to resize/crop images to the correct sizes listed below. Then save for web File > Export > Save For Web. Use JPEG and check the progressive option.</p>
+    </div>
+    <div class="tutorials non-designer-tut">
+      <h2>For Non Designers</h2>
+      <p>info to come.</p>
+    </div>
+  </div>
+
+  <section>
     <ul class="clients"></ul>
-  </div>
+  </section>
+
 </body>
 <script>
 
 const clients = [
   {
     name: "Professional Travel", oneWordDesc: 'planes, travel', url: "https://protrav.com",
+    sections: [
+      {
+        sectionName: "Blog Thumbnail", width: 500, height: 415,
+        notes: ''
+      }
+    ]
+  },
+  {
+    name: "Alson Jewelers", oneWordDesc: 'planes, travel', url: "https://protrav.com",
+    sections: [
+      {
+        sectionName: "Blog Thumbnail", width: 500, height: 415,
+        notes: ''
+      }
+    ]
+  },
+  {
+    name: "Rosenberg Advertising", oneWordDesc: 'planes, travel', url: "https://protrav.com",
     sections: [
       {
         sectionName: "Blog Thumbnail", width: 500, height: 415,
@@ -133,29 +256,60 @@ const clients = [
   }
 ]
 const clientList = document.querySelector('.clients');
+const jumpToClient = document.querySelector('[name=jumpToClient]');
+const buttonDesigner = document.querySelector('.forDesigner');
+const buttonNonDesigner = document.querySelector('.forNonDesigners');
+const designerTut = document.querySelector('.designer-tut');
+const nonDesignerTut = document.querySelector('.non-designer-tut');
 
 function populateList(clientList, clients) {
   clients.forEach(client => {
-    let content = `<li><h2>${client.name} <a href="${client.url}" target="_blank">${client.url}</a></h2>`;
+    let slug = (client.name.replace(/\s/g, ''));
+    slug = slug.replace('.', '');
+    jumpToClient.innerHTML = jumpToClient.innerHTML + `<option value="${slug}">${client.name}</option>`;
+
+    let content = `<li class="${slug}"><div class="wrap"><h2>${client.name} <a href="${client.url}" target="_blank">${client.url}</a></h2>`;
     const sections = client.sections;
     sections.forEach(section => {
-      
       content = content + `
       <div class="grid"><h3>${section.sectionName} - ${section.width} X ${section.height}</h3>
       <img src="https://source.unsplash.com/${section.width}x${section.height}/?${client.oneWordDesc}" />
-      </div>`; 
+      </div>`;
       if(section.notes){
         content = content + `<p class="notes"><span>&#10033;</span>${section.notes}</p>`;
       }
-    });  
-    content = content + `</li>`;
+    });
+    content = content + `</div></li>`;
     clientList.innerHTML = clientList.innerHTML + content;
   });
 };
 
+function scrollToClient(){
+  const clientName = jumpToClient.value;
+  const clientScrollName = document.querySelector(`.${clientName}`);
+  clientScrollName.scrollIntoView({behavior: "smooth"});
+}
+
+
+
 populateList(clientList, clients);
 
+function showInstructions(e){
+  const showTut = this.classList;
+  if(showTut.value === "forDesigner"){
+    nonDesignerTut.classList.remove('active');
+    designerTut.classList.toggle('active');
+  } else {
+    designerTut.classList.remove('active');
+    nonDesignerTut.classList.toggle('active');
+  }
+
+}
+
+jumpToClient.addEventListener('change', scrollToClient);
+buttonDesigner.addEventListener('click', showInstructions);
+buttonNonDesigner.addEventListener('click', showInstructions);
 </script>
-</html> 
+</html>
 
 
