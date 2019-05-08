@@ -9,6 +9,10 @@
     body{
       font-family: 'Montserrat', sans-serif;
     }
+    img{
+      max-width: 100%;
+      height: auto;
+    }
     /* .grid{
       display: grid;
       justify-items: center;
@@ -28,9 +32,7 @@
     }
     li{
       background: #f7f7f7;
-      margin-bottom: 20px;
       padding: 20px;
-      border-bottom: 1px solid #ccc;
     }
     li:nth-child(even){
       background: #ececec;
@@ -84,21 +86,37 @@ const clients = [
 ]
 const clientList = document.querySelector('.clients');
 
+// function populateList(clientList, clients) {
+//   clients.forEach(client => {
+//     clientList.innerHTML = clientList.innerHTML + `
+//     <li><h2>${client.name}</h2>
+//     <a href="${client.url}" target="_blank">${client.url}</a><br>`;
+    
+//     const sections = client.sections;
+   
+//     sections.forEach(section => {
+//       clientList.innerHTML = clientList.innerHTML + `
+//       <h3>${section.sectionName} - ${section.width} X ${section.height}</h3>
+//       <img src="https://source.unsplash.com/${section.width}x${section.height}/?${client.oneWordDesc}" />
+//       `; 
+//     });  
+//     clientList.innerHTML = clientList.innerHTML + `</li>`;
+//   });
+// };
+
 function populateList(clientList, clients) {
   clients.forEach(client => {
-    clientList.innerHTML = clientList.innerHTML + `
-    <li><h2>${client.name}</h2>
+    let content = `<li><h2>${client.name}</h2>
     <a href="${client.url}" target="_blank">${client.url}</a><br>`;
-    
     const sections = client.sections;
-   
     sections.forEach(section => {
-      clientList.innerHTML = clientList.innerHTML + `
+      content = content + `
       <h3>${section.sectionName} - ${section.width} X ${section.height}</h3>
       <img src="https://source.unsplash.com/${section.width}x${section.height}/?${client.oneWordDesc}" />
       `; 
     });  
-    clientList.innerHTML = clientList.innerHTML + `</li>`;
+    content = content + `</li>`;
+    clientList.innerHTML = clientList.innerHTML + content;
   });
 };
 
