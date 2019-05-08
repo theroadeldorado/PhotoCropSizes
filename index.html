@@ -13,12 +13,6 @@
       max-width: 100%;
       height: auto;
     }
-    /* .grid{
-      display: grid;
-      justify-items: center;
-      align-items: center;
-      width: auto;
-    } */
     .wrap{
       max-width: 1200px;
       width: 100%;
@@ -81,28 +75,9 @@ const clients = [
         notes: 'These images can be any height but not wider than 600px'
       }
     ]
-    
   }
 ]
 const clientList = document.querySelector('.clients');
-
-// function populateList(clientList, clients) {
-//   clients.forEach(client => {
-//     clientList.innerHTML = clientList.innerHTML + `
-//     <li><h2>${client.name}</h2>
-//     <a href="${client.url}" target="_blank">${client.url}</a><br>`;
-    
-//     const sections = client.sections;
-   
-//     sections.forEach(section => {
-//       clientList.innerHTML = clientList.innerHTML + `
-//       <h3>${section.sectionName} - ${section.width} X ${section.height}</h3>
-//       <img src="https://source.unsplash.com/${section.width}x${section.height}/?${client.oneWordDesc}" />
-//       `; 
-//     });  
-//     clientList.innerHTML = clientList.innerHTML + `</li>`;
-//   });
-// };
 
 function populateList(clientList, clients) {
   clients.forEach(client => {
