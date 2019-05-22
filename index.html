@@ -126,7 +126,7 @@
       overflow: hidden;
     }
     section{
-      margin-top: 40px;
+      margin-top: 100px;
 
     }
     h2{
@@ -138,11 +138,11 @@
       margin: 0px;
       list-style: none;
     }
-    li{
+    .clients li{
       background: #f7f7f7;
       padding: 20px;
     }
-    li:nth-child(even){
+    .clients li:nth-child(even){
       background: #ececec;
     }
     .tut-draw{
@@ -178,7 +178,88 @@
       opacity: 1;
       visibility:visible;
     }
+    .tutorials ul, .tutorials li{
+      list-style: disc;
+      background: none;
+      padding: 0px;
+      margin: 14px 0 14px 14px;
+    }
+    .tutorials a{
+      top:0px;
+      color: blueviolet;
+    }
+    button {
+      background: none;
+      border: 2px solid;
+      font: inherit;
+      line-height: 1;
+      margin: 0.5em;
+      padding: 12px 15px;
+      cursor: pointer;
+    }
+    button {
+      color: #fff;
+      transition: 0.25s;
+      -webkit-appearance: none;
+    }
+    * { outline: none; }
 
+    button:hover {
+      border-color: blueviolet;
+      color: #fff;
+      box-shadow: inset 0 0 0 2em blueviolet;
+
+    }
+    .selectdiv {
+      position: relative;
+    }
+
+    select::-ms-expand {
+      display: none;
+    }
+
+    .selectdiv:after {
+      content: '⇩';
+      font: 17px "Consolas", monospace;
+      color: #333;
+      /* -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      transform: rotate(90deg); */
+      right: 11px;
+      /*Adjust for position however you want*/
+
+      top: 18px;
+      padding: 0 0 2px;
+      border-bottom: 1px solid #999;
+      /*left line */
+
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .selectdiv select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      /* Add some styling */
+
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      height: 50px;
+      float: right;
+      margin: 5px 0px;
+      padding: 0px 24px;
+      font-size: 16px;
+      line-height: 1.75;
+      color: #333;
+      background-color: #ffffff;
+      background-image: none;
+      border: 1px solid #cccccc;
+      -ms-word-break: normal;
+      word-break: normal;
+    }
 
   </style>
 <title>Image Resizing Guide</title>
@@ -186,9 +267,12 @@
 <body>
   <div class="nav">
     <div class="wrap">
-      <select name="jumpToClient">
-        <option disabled selected>Jump to Client</option>
-      </select>
+      <div class="selectdiv">
+        <select name="jumpToClient">
+          <option disabled selected>Jump to Client</option>
+        </select>
+      </div>
+
       <label>Instructions For:</label>
       <button class="forDesigner">Designers</button>
       <button class="forNonDesigners">Non-Designers</button>
@@ -199,10 +283,21 @@
       <h2>For Designers</h2>
       <p>Use .svg over .png when possible</p>
       <p>Use PhotoShop to resize/crop images to the correct sizes listed below. Then save for web File > Export > Save For Web. Use JPEG and check the progressive option.</p>
+      <p>The idea is to get the file size as small as possible.</p>
+      <p><a target="_blank" href="https://compressor.io/compress">compressor.io</a> is a good tool for further compressing an image with almost no loss in quality. </p>
     </div>
     <div class="tutorials non-designer-tut">
       <h2>For Non Designers</h2>
-      <p>info to come.</p>
+      <p>Use <a target="_blank" href="https://www.fotor.com/app.html#/editor/basic">Fotor.com</a></p>
+      <ul>
+        <li>On the top right you can import the photo you want to resize/crop.</li>
+        <li>On the left hand side you can click resize. Keep these locked so that you don't strech the image. Set the width or height to the match what the website requires. Click Apply.</li>
+        <li>Then crop the image to make the other dimmension match what the website needs.</li>
+        <li>Click Save in the top toolbar. You may have to create an account.</li>
+        <li>You can rename the file if needed. Select jpg in the image doesnt have transparentcy. If it does select png. Use High Quality. Then click Download.</li>
+        <li>Now use the newly created file to upload to the website.</li>
+        <p><a target="_blank" href="https://compressor.io/compress">compressor.io</a> is a good tool for further compressing an image with almost no loss in quality.</p>
+      </ul>
     </div>
   </div>
 
@@ -224,7 +319,7 @@ const clients = [
     ]
   },
   {
-    name: "Alson Jewelers", oneWordDesc: 'planes, travel', url: "https://protrav.com",
+    name: "Alson Jewelers", oneWordDesc: 'jewelery, ring', url: "https://alsonjewelers.com",
     sections: [
       {
         sectionName: "Blog Thumbnail", width: 500, height: 415,
@@ -233,10 +328,10 @@ const clients = [
     ]
   },
   {
-    name: "Rosenberg Advertising", oneWordDesc: 'planes, travel', url: "https://protrav.com",
+    name: "Rosenberg Advertising", oneWordDesc: 'agency, advertising', url: "https://rosenbergadv.com",
     sections: [
       {
-        sectionName: "Blog Thumbnail", width: 500, height: 415,
+        sectionName: "Blog Thumbnail", width: 600, height: 400,
         notes: ''
       }
     ]
@@ -255,6 +350,14 @@ const clients = [
     ]
   }
 ]
+const sortedClients = clients.sort(function (a, b){
+  if(a.name > b.name){
+    return 1;
+  } else {
+    return -1;
+  }
+})
+
 const clientList = document.querySelector('.clients');
 const jumpToClient = document.querySelector('[name=jumpToClient]');
 const buttonDesigner = document.querySelector('.forDesigner');
@@ -289,7 +392,6 @@ function scrollToClient(){
   const clientScrollName = document.querySelector(`.${clientName}`);
   clientScrollName.scrollIntoView({behavior: "smooth"});
 }
-
 
 
 populateList(clientList, clients);
