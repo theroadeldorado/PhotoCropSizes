@@ -1,0 +1,43 @@
+{ "posts": [
+    {
+      "name": "Professional Travel", "oneWordDesc": "planes, travel", "url": "https://protrav.com",
+      "sections": [
+        {
+          "sectionName": "Blog Thumbnail", "width": 500, "height": 415,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Alson Jewelers", "oneWordDesc": "jewelery, ring", "url": "https://alsonjewelers.com",
+      "sections": [
+        {
+          "sectionName": "Blog Thumbnail", "width": 500, "height": 415,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Rosenberg Advertising", "oneWordDesc": "agency, advertising", "url": "https://rosenbergadv.com",
+      "sections": [
+        {
+          "sectionName": "Blog Thumbnail", "width": 600, "height": 400,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Feldmar Watch Co.", "oneWordDesc": "watches, watch", "url": "https://feldmarwatch.com",
+      "sections": [
+        {
+          "sectionName": "Blog Thumbnail", "width": 900, "height": 284,
+          "notes": ""
+        },
+        {
+          "sectionName": "Images in blog posts", "width": 600, "height": 300,
+          "notes": "These images can be any height but not wider than 600px"
+        }
+      ]
+    }
+  ]
+}

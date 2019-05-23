@@ -1,0 +1,243 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1.4;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+body{
+  font-family: 'Montserrat', sans-serif;
+}
+img{
+  max-width: 100%;
+  height: auto;
+}
+a{
+  font-size: 16px;
+  font-weight: 300;
+  color: #6d6d6d;
+  position: relative;
+  top: -2px;
+  text-decoration: none;
+  transition: all 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transform: scale(1);
+  transform-origin: left bottom;
+  display: inline-block;
+}
+a:hover{
+  transform: scale(1.1);
+  color: #171717;
+}
+p{
+  margin-bottom: 15px;
+}
+.nav{
+  z-index: 5;
+  position: fixed;
+  top: 0px;
+  background: #000;
+  color: #fff;
+  width: 100%;
+}
+.grid{
+  display: grid;
+  grid-template-columns: auto;
+  margin-top: 20px;
+}
+.grid img{
+  grid-column: 1;
+  grid-row: 1 / -1;
+}
+.grid h3{
+  display: inline-block;
+  grid-column: 1;
+  grid-row: 1 / -1;
+  z-index: 1;
+  align-self: end;
+  justify-self: left;
+  color: #fff;
+  text-shadow: 1px 1px 6px #000000a6;
+  margin: 0 0 20px 20px;
+  background: #000;
+  padding: 5px 8px;
+}
+.notes{
+  color: #000;
+  padding: 10px 0;
+  margin-top: 0px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+}
+.notes span{
+  margin-right: 5px;
+  position: relative;
+  top: -1px;
+}
+.wrap{
+  max-width: 1200px;
+  padding: 20px;
+  margin: auto;
+  overflow: hidden;
+}
+section{
+  margin-top: 100px;
+
+}
+h2{
+  font-size: 24px;
+  font-weight: 600;
+}
+ul, li{
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+.clients li{
+  background: #f7f7f7;
+  padding: 20px;
+}
+.clients li:nth-child(even){
+  background: #ececec;
+}
+.tut-draw{
+  z-index: 4;
+  width: 100%;
+  position: fixed;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: start;
+}
+.tutorials{
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  margin: auto;
+  transform: translateY(-100px);
+  max-width: 600px;
+  width: 100%;
+  opacity: 0;
+  padding: 40px;
+  overflow: hidden;
+  z-index: 2;
+  visibility: hidden;
+  background: #fff;
+  color: #000;
+  border: 1px solid #f1f1f1;
+  box-shadow: 2px 2px 2px #00000029;
+  transition: 1s ease all;
+  margin: 20px;
+}
+.active{
+  transform: translateY(0);
+  opacity: 1;
+  visibility:visible;
+}
+.tutorials ul, .tutorials li{
+  list-style: disc;
+  background: none;
+  padding: 0px;
+  margin: 14px 0 14px 14px;
+}
+.tutorials a{
+  top:0px;
+  color: blueviolet;
+}
+button {
+  background: none;
+  border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 12px 15px;
+  cursor: pointer;
+}
+button {
+  color: #fff;
+  transition: 0.25s;
+  -webkit-appearance: none;
+}
+* { outline: none; }
+
+button:hover {
+  border-color: blueviolet;
+  color: #fff;
+  box-shadow: inset 0 0 0 2em blueviolet;
+
+}
+.selectdiv {
+  position: relative;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.selectdiv:after {
+  content: '⇩';
+  font: 17px "Consolas", monospace;
+  color: #333;
+  right: 11px;
+  top: 18px;
+  padding: 0 0 2px;
+  border-bottom: 1px solid #999;
+  position: absolute;
+  pointer-events: none;
+}
+
+.selectdiv select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: 50px;
+  float: right;
+  margin: 5px 0px;
+  padding: 0px 24px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #333;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  -ms-word-break: normal;
+  word-break: normal;
+}
